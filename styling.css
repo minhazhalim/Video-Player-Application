@@ -1,236 +1,62 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Questrial&display=swap);
 * {
-     margin: 0px;
-     padding: 0px;
      box-sizing: border-box;
-     font-family: 'Poppins',sans-serif;
 }
 body {
+     font-family: 'Questrial',sans-serif;
+     background-color: #666;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
      min-height: 100vh;
-     background-color: #E3F2FD;
+     margin: 0px;
 }
-body,.container,.video-controls,.video-timer,.options {
+h1 {
+     color: #fff;
+}
+.screen {
+     cursor: pointer;
+     width: 60%;
+     background-color: #000 !important;
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
+}
+.controls {
+     background-color: #333;
+     color: #fff;
+     width: 60%;
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
      display: flex;
      align-items: center;
      justify-content: center;
+     padding: 10px;
 }
-.container {
-     width: 98%;
-     max-width: 900px;
-     user-select: none;
-     overflow: hidden;
-     border-radius: 5px;
-     background-color: #000;
-     aspect-ratio: 16 / 9;
-     position: relative;
-     box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-}
-.container.fullscreen {
-     width: 100%;
-     max-width: 100%;
-     height: 100vh;
-     border-radius: 0px;
-}
-.wrapper {
-     position: absolute;
-     left: 0px;
-     right: 0px;
-     bottom: -15px;
-     z-index: 1;
-     opacity: 0;
-     transition: all 0.08s ease;
-}
-.container.show-controls .wrapper {
-     opacity: 1;
-     bottom: 0px;
-     transition: all 0.13s ease;
-}
-.wrapper::before {
-     content: "";
-     position: absolute;
-     bottom: 0%;
-     z-index: -1;
-     width: 100%;
-     height: calc(100% + 35px);
-     pointer-events: none;
-     background: linear-gradient(to top,rgba(0,0,0,0.7),transparent);
-}
-.video-timeline {
-     width: 100%;
-     height: 7px;
+.controls .button {
+     border: 0px;
+     background-color: transparent;
      cursor: pointer;
 }
-.video-timeline .progress-area {
-     height: 3px;
-     position: relative;
-     background-color: rgba(255,255,255,0.6);
+.controls .button:focus {
+     outline: 0;
 }
-.video-timeline .progress-area span {
-     position: absolute;
-     top: -25px;
-     left: 50%;
-     font-size: 13px;
-     color: #fff;
-     pointer-events: none;
-     transform: translateX(-50%);
+.controls .fa-play {
+     color: #28a745;
 }
-.video-timeline .progress-area .progress-bar {
-     position: relative;
-     width: 0%;
-     height: 100%;
-     background-color: #2289ff;
+.controls .fa-stop {
+     color: #dc3545;
 }
-.video-timeline .progress-area .progress-bar::before {
-     content: "";
-     position: absolute;
-     top: 50%;
-     right: 0%;
-     width: 13px;
-     height: 13px;
-     border-radius: 50%;
-     background-color: #2289ff;
-     transform: translateY(-50%);
-}
-.video-timeline .progress-area .progress-bar::before,.video-timeline .progress-area span {
-     display: none;
-}
-.video-timeline:hover .progress-bar::before,.video-timeline:hover .progress-area span {
-     display: block;
-}
-.wrapper .video-controls {
-     padding: 5px 20px 10px;
-}
-.wrapper .video-controls .options {
-     width: 100%;
-}
-.wrapper .video-controls .options:first-child {
-     justify-content: flex-start;
-}
-.wrapper .video-controls .options:last-child {
-     justify-content: flex-end;
-}
-.wrapper .video-controls .options button {
-     width: 40px;
-     height: 40px;
-     font-size: 19px;
-     border: none;
-     border-radius: 3px;
-     cursor: pointer;
-     background: none;
-     color: #efefef;
-     transition: all 0.3s ease;
-}
-.wrapper .video-controls .options button :where(i,span) {
-     width: 100%;
-     height: 100%;
-     line-height: 40px;
-}
-.wrapper .video-controls .options button:hover :where(i,span) {
+.controls .fa-pause {
      color: #fff;
 }
-.wrapper .video-controls .options button:active :where(i,span) {
-     transform: scale(0.9);
-}
-.wrapper .video-controls .options button span {
-     font-size: 23px;
-}
-.wrapper .video-controls .options input {
-     max-width: 75px;
-     height: 4px;
-     margin-left: 3px;
-     accent-color: #0078FF;
-}
-.wrapper .video-controls .options .video-timer {
-     color: #efefef;
-     margin-left: 15px;
-     font-size: 14px;
-}
-.wrapper .video-controls .options .separator {
-     margin: 0px 5px;
-     font-size: 16px;
-     font-family: 'Open sans';
-}
-.wrapper .video-controls .options .playback-content {
-     display: flex;
-     position: relative;
-}
-.wrapper .video-controls .options .playback-content .speed-options {
-     position: absolute;
-     left: -40px;
-     bottom: 40px;
-     width: 95px;
-     list-style: none;
-     overflow: hidden;
-     opacity: 0;
-     border-radius: 4px;
-     pointer-events: none;
-     background-color: rgba(255,255,255,0.9);
-     box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-     transition: opacity 0.13s ease;
-}
-.wrapper .video-controls .options .playback-content .speed-options.show {
-     opacity: 1;
-     pointer-events: auto;
-}
-.wrapper .video-controls .options .playback-content .speed-options li {
-     cursor: pointer;
-     color: #000;
-     font-size: 14px;
-     margin: 2px 0px;
-     padding: 5px 0px 5px 15px;
-     transition: all 0.1s ease;
-}
-.wrapper .video-controls .options .playback-content .speed-options li:where(:first-child,:last-child) {
-     margin: 0px;
-}
-.wrapper .video-controls .options .playback-content .speed-options li:hover {
-     background-color: #dfdfdf;
-}
-.wrapper .video-controls .options .playback-content .speed-options li.active {
-     background-color: #3e97fd;
+.controls .timestamp {
      color: #fff;
+     font-weight: bold;
+     margin-left: 10px;
 }
-.container video {
-     width: 100%;
-}
-@media only screen and (max-width:540px){
-     .wrapper .video-controls {
-          padding: 3px 10px 7px;
-     }
-     .options input,.progress-area span {
-          display: none !important;
-     }
-     .options button {
-          width: 30px;
-          height: 30px;
-          font-size: 17px;
-     }
-     .options .video-timer {
-          margin-left: 5px;
-     }
-     .video-timer .separator {
-          font-size: 14px;
-          margin: 0px 2px;
-     }
-     .options button :where(i,span) {
-          line-height: 30px;
-     }
-     .options button span {
-          font-size: 21px;
-     }
-     .options .video-timer,.progress-area span,.speed-options li {
-          font-size: 12px;
-     }
-     .playback-content .speed-options {
-          width: 75px;
-          left: -30px;
-          bottom: 30px;
-     }
-     .speed-options li {
-          margin: 1px 0px;
-          padding: 3px 0px 3px 10px;
-     }
-     .right .picture-in-picture {
-          display: none;
+@media only screen and (max-width:800px){
+     .screen,.controls {
+          width: 90%;
      }
 }
