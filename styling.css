@@ -1,0 +1,226 @@
+* {
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+     outline: none;
+     color:#ffffff;
+     font-family: 'Roboto Mono',monospace;
+}
+body {
+     background-color:#2887e3;
+}
+.flex {
+     display: flex;
+}
+.flex-space {
+     display: flex;
+     justify-content: space-between;
+}
+.container {
+     padding: 1em 0em;
+}
+#my-video {
+     width: 100%;
+}
+.rotate-container {
+     position: absolute;
+     top: 0%;
+     width: 100%;
+     height: 100%;
+     background-color:rgba(0,0,0,0.3);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+#rotate-icon {
+     display: flex;
+     flex-direction: column;
+     color:#dddddd;
+     text-align: center;
+}
+.hide {
+     display: none;
+}
+.video-container {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     width: 60%;
+     box-shadow: 20px 30px 50px rgba(0,0,0,0.2);
+}
+.controls {
+     position: absolute;
+     right: 0px;
+     left: 0px;
+     bottom: 0px;
+     background-color:rgba(35,34,39,0.8);
+}
+.progress-container {
+     align-items: center;
+     padding: 0rem 0.5em;
+}
+.video-controls {
+     flex-direction: row;
+     align-items: center;
+}
+#progress-bar {
+     position: relative;
+     width: 75%;
+     height: 5px;
+     background-color:#000000;
+     margin: 1em 0em;
+     vertical-align: 2px;
+     border-radius: 5px;
+     cursor: pointer;
+}
+.song-timer {
+     font-size: 0.8em;
+     width: 25%;
+     text-align: right;
+}
+#current-progress {
+     position: absolute;
+     left: 0px;
+     width: 0px;
+     height: 5px;
+     display: inline-block;
+     background-color:#2887e3;
+     border-radius: 5px;
+}
+#current-progress::after {
+     content: "";
+     position: absolute;
+     top: -2.5px;
+     left: calc(100% - 1.5px);
+     width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     background-color:#ffffff;
+}
+.playback {
+     position: relative;
+}
+.control-button,#screen-expand,#screen-compress {
+     width: 3em;
+     height: 3em;
+     border: none;
+     outline: none;
+     background-color:transparent;
+}
+#size-screen {
+     margin-left: auto;
+}
+.volume {
+     align-items: center;
+     margin-left: 0.6em;
+}
+#volume-range {
+     position: relative;
+     margin: 0em 0.5em;
+     cursor: pointer;
+     height: 5px;
+     -webkit-appearance: none;
+     background-color:#000000;
+     border-radius: 5px;
+     outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+     -webkit-appearance: none;
+     width: 10px;
+     height: 10px;
+     background-color:#2887e3;
+     border: none;
+     border-radius: 50%;
+     cursor: pointer;
+}
+.fa-solid {
+     font-size: 1.1rem;
+}
+.container-2 {
+     width: 10%;
+     min-width: 70px;
+     align-items: center;
+}
+#playback-speed-button {
+     position: relative;
+     background-color:transparent;
+     color: #ffffff;
+     border: 1px solid #ffffff;
+     border-radius: 5px;
+     padding: 0.3em 0.25em;
+     cursor: pointer;
+}
+.playback-options {
+     position: absolute;
+     bottom: 0em;
+     z-index: 1;
+     min-width: 5em;
+     background-color:#000000;
+     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.playback-options button {
+     background-color:transparent;
+     color:#ffffff;
+     border-top: 0px;
+     border-right: 0px;
+     border-left: 0px;
+     width: 100%;
+     padding: 1em;
+     text-decoration: none;
+     display: block;
+}
+@media all and (display-mode:fullscreen){
+     .container {
+          padding: 0px;
+     }
+     .video-container {
+          width: 100%;
+          margin: 0%;
+     }
+     .controls {
+          position: absolute;
+          left: 0%;
+          bottom: 0%;
+          z-index: 2;
+          width: 100%;
+          display: block;
+     }
+     #progress-bar {
+          width: 80%;
+     }
+     .song-timer {
+          width: 20%;
+          font-size: 1.2em;
+     }
+     .fa-solid {
+          color:#dddddd;
+     }
+}
+@media only screen and (max-width:768px){
+     .video-container,.controls {
+          width: 100%;
+     }
+     span {
+          display: inline;
+     }
+     #progress-bar {
+          width: 60%;
+     }
+     .song-timer {
+          width: 40%;
+          font-size: 0.9em;
+     }
+     .fa-solid {
+          font-size: 1rem;
+     }
+     .control-button,#screen-expand,#screen-compress {
+          width: 2em;
+          height: 1.5em;
+     }
+}
+@media only screen and (max-width:768px) and (display-mode:fullscreen){
+     .video-container {
+          margin-top: 50%;
+     }
+}
